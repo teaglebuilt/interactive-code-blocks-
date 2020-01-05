@@ -1,7 +1,6 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const chapterTemplate = path.resolve('src/templates/chapter.js')
 
-// You can delete this file if you're not using it
+
+function replacePath(pagePath) {
+    return pagePath === `/` ? pagePath : pagePath.replace(/\/$/, ``)
+}
