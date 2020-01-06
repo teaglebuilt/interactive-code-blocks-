@@ -2,8 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import SEO from "./seo"
-import Header from "./header"
-import "./layout.css"
+import classes from "../styles/layout.module.sass"
 
 const Layout = ({ title, description, children }) => {
   return (
@@ -24,6 +23,16 @@ const Layout = ({ title, description, children }) => {
         return (
           <>
             <SEO title={title} description={description} />
+            <main className={classes.root}>
+              <div className={classes.content}>
+                {(title || description) && (
+                  <header className={classes.header}>
+                    {title && <h1 className={classes.title}>{title}</h1>}
+                  </header>
+                )}
+                {children}
+              </div>
+            </main>
           </>
         )
       }}

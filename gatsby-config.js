@@ -1,9 +1,22 @@
-const meta = require('./meta.json')
-const autoprefixer = require('autoprefixer')
+const meta = require("./meta.json")
+const autoprefixer = require("autoprefixer")
 
 module.exports = {
   siteMetadata: meta,
   plugins: [
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        indentedSyntax: true,
+        postCssPlugins: [autoprefixer()],
+        cssLoaderOptions: {
+          localIdentName:
+            process.env.NODE_ENV == "development"
+              ? "[name]-[local]-[hash:8]"
+              : "[hash:8]",
+        },
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -20,11 +33,11 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-react-svg',
+      resolve: "gatsby-plugin-react-svg",
       options: {
-          rule: {
-              include: /static/,
-          },
+        rule: {
+          include: /static/,
+        },
       },
     },
     {
@@ -41,23 +54,23 @@ module.exports = {
           {
             resolve: `gatsby-remark-smartypants`,
             options: {
-                dashes: 'oldschool',
+              dashes: "oldschool",
             },
           },
           {
             resolve: `gatsby-remark-images`,
             options: {
-                maxWidth: 790,
-                linkImagesToOriginal: true,
-                sizeByPixelDensity: false,
-                showCaptions: true,
-                quality: 80,
-                withWebp: { quality: 80 },
+              maxWidth: 790,
+              linkImagesToOriginal: true,
+              sizeByPixelDensity: false,
+              showCaptions: true,
+              quality: 80,
+              withWebp: { quality: 80 },
             },
           },
           `gatsby-remark-unwrap-images`,
-        ]
-      }
+        ],
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

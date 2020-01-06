@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import { graphql, navigate } from "gatsby"
 import useLocalStorage from "@illinois/react-use-local-storage"
-import { ChapterContext } from "../context"
+import { ChapterContext } from "../utils/context"
+import { renderAst } from "../utils/markdown"
 
 const Template = ({ data }) => {
   const { markdownRemark, site } = data
@@ -13,6 +14,8 @@ const Template = ({ data }) => {
     `${courseId}-completed-${id}`,
     []
   )
+  const html = renderAst(htmlAst)
+
   const buttons = [
     { slug: prev, text: "« Previous Chapter" },
     { slug: next, text: "Next Chapter »" },
@@ -21,7 +24,11 @@ const Template = ({ data }) => {
   return (
     <ChapterContext.Provider
       value={{ activeExc, setActiveExc, completed, setCompleted }}
-    ></ChapterContext.Provider>
+    >
+      <Layout title={title} description={description}>
+        {html}
+      </Layout>
+    </ChapterContext.Provider>
   )
 }
 
