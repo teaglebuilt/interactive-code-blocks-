@@ -5,7 +5,6 @@ import { Link } from "../components/link"
 import classes from "../styles/index.module.sass"
 
 export default ({ data }) => {
-  const siteMetadata = data.site.siteMetadata
   const chapters = data.allMarkdownRemark.edges.map(({ node }) => ({
     slug: node.fields.slug,
     title: node.frontmatter.title,

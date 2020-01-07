@@ -56,3 +56,5 @@ Link.propTypes = {
   variant: PropTypes.oneOf(["secondary", null]),
   hidden: PropTypes.bool,
 }
+
+export default Link

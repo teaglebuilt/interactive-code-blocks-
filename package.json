@@ -6,7 +6,13 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@illinois/react-use-local-storage": "^1.1.0",
+    "@jupyterlab/outputarea": "^1.2.2",
+    "@jupyterlab/rendermime": "^1.2.1",
+    "@jupyterlab/services": "^4.2.0",
+    "@phosphor/widgets": "^1.9.3",
+    "browser-monads": "^1.0.0",
     "classnames": "^2.2.6",
+    "codemirror": "^5.50.2",
     "gatsby": "^2.18.18",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-manifest": "^2.2.31",
@@ -29,7 +35,8 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "rehype-react": "^4.0.1"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
@@ -41,6 +48,7 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
+    "debug": "node --nolazy --inspect-brk node_modules/gatsby/dist/bin/gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",

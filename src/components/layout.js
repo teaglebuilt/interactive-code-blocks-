@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import SEO from "./seo"
 import classes from "../styles/layout.module.sass"
@@ -19,7 +18,7 @@ const Layout = ({ title, description, children }) => {
         }
       `}
       render={data => {
-        const meta = data.site.siteMetadata
+        // const meta = data.site.siteMetadata
         return (
           <>
             <SEO title={title} description={description} />
@@ -38,10 +37,6 @@ const Layout = ({ title, description, children }) => {
       }}
     />
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout
