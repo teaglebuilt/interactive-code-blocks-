@@ -17,7 +17,6 @@ the one for the instructions below.
 - These are instructions and they can have bullet points.
 - The code block below will look for the files `exc_01_03`, `solution_01_03` and
   `test_01_03` in `/exercises`.
-  <codeblock source="exc_01_01_01" solution="solution_01_01_01">
-
-   </codeblock>
-  </challenge>
+  <codeblock source="exc_01_01_01">
+  </codeblock>
+</challenge>
