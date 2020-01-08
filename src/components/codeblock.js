@@ -1,5 +1,6 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
+import classes from '../styles/codeblock.module.sass'
 import Juniper from "./juniper"
 import { get } from "https"
 
@@ -36,6 +37,12 @@ class CodeBlock extends React.Component {
   render() {
     const { Juniper, showSolution } = this.state
     const { source, solution, test, children } = this.props
+    const juniperClassNames = {
+      cell: classes.cell,
+      input: classes.input,
+      button: classes.button,
+      output: classes.output,
+  }
 
     const query = graphql`
       {
@@ -69,8 +76,9 @@ class CodeBlock extends React.Component {
           const solutionFile = files[solution]
           return (
             <>
-              <Juniper repo={data.site.siteMetadata.juniper.repo}>
-                {showSolution ? solutionFile : sourceFile}
+              <Juniper repo={data.site.siteMetadata.juniper.repo} 
+                        classNames={juniperClassNames}>
+                  {showSolution ? solutionFile : sourceFile}
               </Juniper>
               {children}
               <button onClick={() => this.handleShowSolution()}>

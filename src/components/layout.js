@@ -1,6 +1,7 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import SEO from "./seo"
+import '../styles/index.sass'
 import classes from "../styles/layout.module.sass"
 
 const Layout = ({ title, description, children }) => {

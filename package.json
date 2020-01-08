@@ -6,17 +6,18 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@illinois/react-use-local-storage": "^1.1.0",
-    "@jupyterlab/outputarea": "^1.2.2",
-    "@jupyterlab/rendermime": "^1.2.1",
-    "@jupyterlab/services": "^4.2.0",
-    "@phosphor/widgets": "^1.9.3",
+    "@jupyterlab/outputarea": "^0.19.1",
+    "@jupyterlab/rendermime": "^0.19.1",
+    "@phosphor/widgets": "^1.6.0",
     "browser-monads": "^1.0.0",
     "classnames": "^2.2.6",
     "codemirror": "^5.50.2",
+    "event-source-polyfill": "^1.0.11",
     "gatsby": "^2.18.18",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-manifest": "^2.2.31",
     "gatsby-plugin-offline": "^3.0.27",
+    "gatsby-plugin-postcss": "^2.1.18",
     "gatsby-plugin-react-helmet": "^3.1.16",
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sass": "^2.1.26",
@@ -30,6 +31,7 @@
     "gatsby-source-filesystem": "^2.1.40",
     "gatsby-transformer-remark": "^2.6.45",
     "gatsby-transformer-sharp": "^2.3.7",
+    "juniper-js": "^0.1.0",
     "node-sass": "^4.13.0",
     "prismjs": "^1.18.0",
     "prop-types": "^15.7.2",
@@ -39,7 +41,8 @@
     "rehype-react": "^4.0.1"
   },
   "devDependencies": {
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "tailwindcss": "^1.1.4"
   },
   "keywords": [
     "gatsby"

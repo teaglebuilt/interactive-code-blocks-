@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 
 import { renderAst } from "../markdown"
 import Layout from "../components/layout"
+import classes from '../styles/chapter.module.sass'
 
 const Template = ({ data, pageContext }) => {
   const { markdownRemark } = data

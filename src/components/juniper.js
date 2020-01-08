@@ -66,17 +66,22 @@ class Juniper extends React.Component {
    * @returns {Promise} - Resolved with Binder settings, rejected with Error.
    */
   requestBinder(repo, branch, url) {
-    const binderUrl = `${url}/build/gh/${repo}/${branch}`
+    console.log(repo, branch, url)
+    const binderUrl = `${url}/gh/${repo}/${branch}`
     this.log(() => console.info("building", { binderUrl }))
+    console.log(binderUrl)
     return new Promise((resolve, reject) => {
       const es = new EventSource(binderUrl)
+      
       es.onerror = err => {
+        console.log(es)
         es.close()
         this.log(() => console.error("failed"))
         reject(new Error(err))
       }
       let phase = null
       es.onmessage = ({ data }) => {
+        console.log(data)
         const msg = JSON.parse(data)
         if (msg.phase && msg.phase !== phase) {
           phase = msg.phase.toLowerCase()
@@ -172,6 +177,7 @@ class Juniper extends React.Component {
    */
   execute(outputArea, code) {
     this.log(() => console.info("executing"))
+    console.log("executing", outputArea, code)
     if (this.state.kernel) {
       if (this.props.isolateCells) {
         this.state.kernel
@@ -194,6 +200,7 @@ class Juniper extends React.Component {
     }
     this.log(() => console.info("requesting kernel"))
     const url = this.props.url.split("//")[1]
+    console.log(url)
     const action = !this.state.fromStorage ? "Launching" : "Reconnecting to"
     outputArea.model.clear()
     outputArea.model.add({
@@ -201,16 +208,19 @@ class Juniper extends React.Component {
       name: "stdout",
       text: `${action} Docker container on ${url}...`,
     })
+    console.log(action)
     new Promise((resolve, reject) =>
       this.getKernel()
         .then(resolve)
         .catch(reject)
     )
       .then(kernel => {
+        console.log(kernel)
         this.setState({ kernel })
         this.renderResponse(outputArea, code)
       })
-      .catch(() => {
+      .catch((err) => {
+       
         this.log(() => console.error("failed"))
         this.setState({ kernel: null })
         if (this.props.useStorage) {
@@ -257,7 +267,7 @@ export default Juniper
 Juniper.defaultProps = {
   children: "",
   branch: "master",
-  url: "https://mybinder.org",
+  url: "https://mybinder.org/v2",
   serverSettings: {},
   kernelType: "python3",
   lang: "python",

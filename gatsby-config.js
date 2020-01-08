@@ -8,7 +8,7 @@ module.exports = {
       resolve: `gatsby-plugin-sass`,
       options: {
         indentedSyntax: true,
-        postCssPlugins: [autoprefixer()],
+        postCssPlugins: [require('tailwindcss')],
         cssLoaderOptions: {
           localIdentName:
             process.env.NODE_ENV == "development"
