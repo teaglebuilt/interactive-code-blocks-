@@ -6,6 +6,8 @@
   "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tristique libero at est congue, sed vestibulum tortor laoreet. Aenean egestas massa non commodo consequat. Curabitur faucibus, sapien vitae euismod imperdiet, arcu erat semper urna.",
   "juniper": {
     "repo": "teaglebuilt/Cookbook",
-    "kernelType": "python3"
-  }
+    "branch": "master",
+    "kernelType": "python3",
+    "debug": false
+}
 }

@@ -17,12 +17,29 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-web-font-loader`,
+      options: {
+        google: {
+          families: [`Pacifico`,]
+        }
+      }
+    },
+    {
+      resolve: "gatsby-plugin-use-dark-mode",
+      options: {
+         classNameDark: "dark-mode",
+         classNameLight: "light-mode",
+         storageKey: "darkMode",
+         minify: true,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `chapters`,
-        path: `${__dirname}/chapters`,
+        name: `content`,
+        path: `${__dirname}/content`,
       },
     },
     {

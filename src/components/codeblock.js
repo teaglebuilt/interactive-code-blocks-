@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
 import { Button } from './button'
-
+import '../styles/index.sass'
 import classes from '../styles/codeblock.module.sass'
 
 function getFiles({ allCode }) {

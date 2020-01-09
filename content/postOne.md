@@ -3,9 +3,11 @@ title: "Chapter 1: Getting started"
 description:
   "This chapter will teach you about many cool things and introduce you to the
   most important concepts of the course."
-next: /chapter2
-type: chapter
+type: post
+tags:
+  - Python
 id: 1
+date: 2018-10-23 07:00:00
 ---
 
 <challenge id="1" title="test">

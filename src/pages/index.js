@@ -3,16 +3,18 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { Link } from "../components/link"
 import classes from "../styles/index.module.sass"
+import '../styles/index.sass'
+
 
 export default ({ data }) => {
-  const chapters = data.allMarkdownRemark.edges.map(({ node }) => ({
+  const posts = data.allMarkdownRemark.edges.map(({ node }) => ({
     slug: node.fields.slug,
     title: node.frontmatter.title,
     description: node.frontmatter.description,
   }))
   return (
     <Layout>
-      {chapters.map(({ slug, title, description }) => (
+      {posts.map(({ slug, title, description }) => (
         <section key={slug} className={classes.chapter}>
           <h2 className={classes.chapterTitle}>
             <Link to={slug}>{title}</Link>
@@ -35,7 +37,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [frontmatter___title], order: ASC }
-      filter: { frontmatter: { type: { eq: "chapter" } } }
+      filter: { frontmatter: { type: { eq: "post" } } }
     ) {
       edges {
         node {

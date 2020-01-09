@@ -1,9 +1,11 @@
 const path = require("path")
 const { createFilePath } = require("gatsby-source-filesystem")
-
-const chapterTemplate = path.resolve("src/templates/chapter.js")
+const _ = require(`lodash`);
+const postTemplate = path.resolve("src/templates/post.js")
+const tagTemplate = path.resolve("src/templates/tags.js")
 
 function replacePath(pagePath) {
+  console.log(pagePath)
   return pagePath === `/` ? pagePath : pagePath.replace(/\/$/, ``)
 }
 
@@ -20,7 +22,7 @@ async function onCreateNode({
     const slug = createFilePath({
       node,
       getNode,
-      basePath: "chapters",
+      basePath: "posts",
       trailingSlash: false,
     })
     createNodeField({ name: "slug", node, value: slug })
@@ -56,6 +58,7 @@ exports.createPages = ({ actions, graphql }) => {
             frontmatter {
               title
               type
+              tags
             }
             fields {
               slug
@@ -69,14 +72,32 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors)
     }
     const posts = result.data.allMarkdownRemark.edges.filter(
-      ({ node }) => node.frontmatter.type == "chapter"
+      ({ node }) => node.frontmatter.type == "post"
     )
     posts.forEach(({ node }) => {
       createPage({
         path: replacePath(node.fields.slug),
-        component: chapterTemplate,
+        component: postTemplate,
         context: { slug: node.fields.slug },
       })
+      let tags = []
+      _.each(posts, edge => {
+        if (_.get(edge, `node.frontmatter.tags`)) {
+          tags = tags.concat(edge.node.frontmatter.tags);
+          console.log(tags);
+        }
+      })
+      tags = _.uniq(tags)
+
+      tags.forEach(tag => {
+        createPage({
+          path: `/tag/${_.kebabCase(tag)}/`,
+          component: tagTemplate,
+          context: {
+            tag
+          }
+        });
+      });
     })
   })
 }
