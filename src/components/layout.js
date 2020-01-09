@@ -1,6 +1,6 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-import useDarkMode from "use-dark-mode"
+import TagBar from "./tagbar"
 import SEO from "./seo"
 import DarkModeToggle from './darkmode'
 import '../styles/index.sass'
@@ -25,9 +25,9 @@ const Layout = ({ title, description, children }) => {
       render={data => {
         // const meta = data.site.siteMetadata
         return (
-          <div>
+          <div className={classes.root}>
             <SEO title={title} description={description} />
-            <main className>
+            <main className={classes.feed}>
               <header className={classes.web_title}>
                 TeagleBuilt Technology
                 <span>
@@ -40,9 +40,12 @@ const Layout = ({ title, description, children }) => {
                     {title && <h1 className={classes.title}>{title}</h1>}
                   </header>
                 )}
-                {children}
+                <div className={classes.root}>
+                  {children}
+                </div>
               </div>
             </main>
+            <TagBar />
           </div>
         )
       }}
