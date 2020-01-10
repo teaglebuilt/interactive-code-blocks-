@@ -1,17 +1,20 @@
 import React from "react"
 import { Link } from "../components/link"
+import Img from "gatsby-image";
 import Icon from "../icons"
 import { slugify } from "../utils/slugger";
 import classes from "../styles/postcard.module.sass"
 
-
-const PostCard = ({title, description, tags, slug, id}) => {
+const PostCard = ({title, description, tags, slug, id, image}) => {
     
     return (
         <section key={slug} className={classes.chapter}>
-            <h2 className={classes.chapterTitle}>
+            <h2 className={classes.chapter_title}>
               <Link to={slug}>{title}</Link>
             </h2>
+            <Link to={slug}>
+              <Img fluid={image} className={classes.postcard_image} />
+            </Link>
             <p className={classes.chapterDesc}>
               <Link to={slug}>{description}</Link>
             </p>

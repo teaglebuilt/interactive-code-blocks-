@@ -18,13 +18,15 @@ const Layout = ({ title, description, children }) => {
               title
               description
               bio
+              twitterUrl
             }
           }
         }
       `}
       render={data => {
-        // const meta = data.site.siteMetadata
+        const meta = data.site.siteMetadata
         return (
+          <>
           <div className={classes.root}>
             <SEO title={title} description={description} />
             <main className={classes.feed}>
@@ -47,6 +49,8 @@ const Layout = ({ title, description, children }) => {
             </main>
             <TagBar />
           </div>
+          
+          </>
         )
       }}
     />

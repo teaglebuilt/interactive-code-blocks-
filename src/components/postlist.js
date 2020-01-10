@@ -15,6 +15,7 @@ const PostList = ({ posts}) => {
                         title={node.frontmatter.title}
                         slug={node.fields.slug}
                         description={node.frontmatter.description}
+                        image={node.frontmatter.image.childImageSharp.fluid}
                         tags={node.frontmatter.tags}
               />
             </li>

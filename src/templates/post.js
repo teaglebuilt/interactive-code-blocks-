@@ -1,9 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
-
 import { renderAst } from "../markdown"
 import Layout from "../components/layout"
-import classes from '../styles/chapter.module.sass'
+import classes from '../styles/layout.module.sass'
 import '../styles/index.sass'
 
 
@@ -14,7 +13,11 @@ const Template = ({ data, pageContext }) => {
   const { title } = frontmatter // TODO: prev, next
   const html = renderAst(htmlAst)
 
-  return <Layout title={title}>{html}</Layout>
+  return (
+    <>
+    <Layout title={title}>{html}</Layout>
+    </>
+  )
 }
 
 export default Template
