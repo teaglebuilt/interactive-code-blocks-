@@ -1,15 +1,30 @@
 import React from "react";
+import { Link, graphql, StaticQuery } from "gatsby";
+import { kebabCase } from "lodash";
 import classes from "../styles/tagbar.module.sass"
 
 
 const TagBar = () => (
-    <ul className={classes.tag_container}>
-        <li className={classes.tag}>X</li>
-        <li>X</li>
-        <li>X</li>
-        <li>X</li>
-        <li>X</li>
-    </ul>
+  <div className={classes.tag_container}>
+    <StaticQuery
+      query={taglistquery}
+      render={data => (
+        <ul className="flex flex-col">
+          {data.allMarkdownRemark.group.map(node => (
+            <li className="flex" key={node.fieldValue}>
+              {/* <Icon name={node.fieldValue} /> */}
+              <Link
+                className="text-gray-600 text-sm italic"
+                to={`/tag/${kebabCase(node.fieldValue)}`}
+              >
+                {node.fieldValue}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    />
+  </div>
 )
 
 

@@ -6,11 +6,7 @@ import '../styles/index.sass'
 
 
 export default ({ data }) => {
-  const posts = data.allMarkdownRemark.edges.map(({ node }) => ({
-    slug: node.fields.slug,
-    title: node.frontmatter.title,
-    description: node.frontmatter.description,
-  }))
+  const posts = data.allMarkdownRemark.edges;
   return (
     <Layout>
       <PostList posts={posts} />
@@ -31,12 +27,14 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
+          id
           fields {
             slug
           }
           frontmatter {
             title
             description
+            tags
           }
         }
       }

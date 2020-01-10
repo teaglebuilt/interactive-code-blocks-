@@ -65,8 +65,12 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
-              noInlineHighlight: true,
-            },
+              classPrefix: `language-`,
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: false,
+              noInlineHighlight: false
+            }
           },
           {
             resolve: `gatsby-remark-smartypants`,

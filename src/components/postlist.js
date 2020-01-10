@@ -1,24 +1,24 @@
 import React from "react"
-import { Link } from "../components/link"
-import classes from "../styles/index.module.sass"
+import PostCard from "./postcard"
 
 
 
-const PostList = ({posts}) => {
-
+const PostList = ({ posts}) => {
+    console.log(posts)
     return(
         <>
         <ul>
-        {posts.map(({ slug, title, description }) => (
-        <section key={slug} className={classes.chapter}>
-          <h2 className={classes.chapterTitle}>
-            <Link to={slug}>{title}</Link>
-          </h2>
-          <p className={classes.chapterDesc}>
-            <Link to={slug}>{description}</Link>
-          </p>
-        </section>
-      ))}
+          {posts.map(({ node}) => (
+            
+            <li key={node.id}>
+              <PostCard id={node.id}
+                        title={node.frontmatter.title}
+                        slug={node.fields.slug}
+                        description={node.frontmatter.description}
+                        tags={node.frontmatter.tags}
+              />
+            </li>
+          ))}
         </ul>
         </>
     )
