@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, graphql, StaticQuery } from "gatsby";
+import Icon from "../icons"
 import { kebabCase } from "lodash";
 import classes from "../styles/tagbar.module.sass"
 
@@ -9,10 +10,10 @@ const TagBar = () => (
     <StaticQuery
       query={taglistquery}
       render={data => (
-        <ul className="flex flex-col">
+        <ul className={classes.class_list}>
           {data.allMarkdownRemark.group.map(node => (
-            <li className="flex" key={node.fieldValue}>
-              {/* <Icon name={node.fieldValue} /> */}
+            <li className={classes.tag} key={node.fieldValue}>
+              <Icon name={node.fieldValue} />
               <Link
                 className="text-gray-600 text-sm italic"
                 to={`/tag/${kebabCase(node.fieldValue)}`}
